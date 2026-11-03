@@ -9,6 +9,6 @@
     "verify": "node tools/verify.mjs"
   },
   "dependencies": {
-    "@toclocoinc/lattice-grid": "1.117.2"
+    "@toclocoinc/lattice-grid": "1.117.3"
   }
 }
