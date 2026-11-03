@@ -4,6 +4,10 @@ IPv4, IPv6, CIDR, MAC and VLAN columns in a grid, and the same types in a form
 bound to the selected row. The grid and the form share one parser, so a value is
 accepted or refused the same way in a cell as in a field.
 
+**Live demo:** https://toclocoinc.github.io/lattice-grid-demo-network-types/
+
+Built with [Lattice Grid](https://www.latticegrid.dev/). The column types are described on [the column types page](https://www.latticegrid.dev/docs/units/).
+
 The whole idea is `src/wiring.js`: the grid, the form and the binding between
 them.
 

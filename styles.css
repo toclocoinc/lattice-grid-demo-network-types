@@ -42,3 +42,8 @@ button.primary { background: var(--accent); color: var(--accent-ink); border-col
   .grid-host { height: 420px; }
   .form-host { min-height: 0; }
 }
+
+.links { margin: 8px 0 0; display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+a { color: var(--accent); }
+.foot { max-width: 1600px; margin: 0 auto; padding: 0 24px 24px; color: var(--muted); font-size: 13px; }
+@media (max-width: 960px) { .foot { padding: 0 12px 20px; } }

@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Network types in a grid and a form</title>
+  <title>Network Types in a Grid and a Form | Lattice Grid</title>
+  <meta name="description" content="IPv4, IPv6, CIDR, MAC and VLAN columns in a Lattice Grid and the same types in a form: one parser for both, numeric sorting, filter boxes and input checking, in plain JavaScript.">
   <link rel="stylesheet" href="node_modules/@toclocoinc/lattice-grid/lattice-grid.min.css">
   <link rel="stylesheet" href="styles.css">
   <script type="importmap">
@@ -20,6 +21,8 @@
     <div>
       <h1>Network types in a grid and a form</h1>
       <p class="lede">IPv4, IPv6, CIDR, MAC and VLAN each sort, filter and validate as the address they are, not as text. The grid and the form share one parser, so a value is accepted or refused the same way in a cell as in a field.</p>
+      <p class="links"><a href="https://github.com/toclocoinc/lattice-grid-demo-network-types">Code on GitHub</a>
+      <a href="https://www.latticegrid.dev/docs/units/">Lattice Grid column types</a></p>
     </div>
     <label class="theme"><span>Theme</span>
       <select id="theme" aria-label="Theme">
@@ -64,6 +67,8 @@
       <pre id="row-json" class="json" tabindex="0" aria-label="Selected row as JSON"></pre>
     </section>
   </main>
+
+  <footer class="foot">Built with <a href="https://www.latticegrid.dev/">Lattice Grid</a>. Synthetic data from the documentation address ranges; no keys, no analytics.</footer>
 
   <script type="module" src="main.js"></script>
 </body>
