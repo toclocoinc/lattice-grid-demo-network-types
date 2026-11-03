@@ -1,0 +1,14 @@
+{
+  "name": "lattice-grid-demo-network-types",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Network types (IPv4, IPv6, CIDR, MAC, VLAN) in a grid and a form.",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "verify": "node tools/verify.mjs"
+  },
+  "dependencies": {
+    "@toclocoinc/lattice-grid": "1.117.0"
+  }
+}

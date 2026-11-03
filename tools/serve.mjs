@@ -75,6 +75,5 @@ if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import
   const wanted = Number(process.argv[2] || 0);
   const { port } = await startServer(Number.isFinite(wanted) ? wanted : 0);
   process.stdout.write(`Serving the demo at http://localhost:${port}/\n`);
-  process.stdout.write(`The saved copy is at http://localhost:${port}/?source=snapshot\n`);
   process.stdout.write('Press Control-C to stop.\n');
 }
