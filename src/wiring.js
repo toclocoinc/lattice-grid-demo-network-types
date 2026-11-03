@@ -3,7 +3,7 @@
  * the line between them. Both read the same column types, so one parser
  * decides what is accepted, in a cell or in a field.
  */
-import { createGrid } from '@toclocoinc/lattice-grid';
+import { createGrid, editors } from '@toclocoinc/lattice-grid';
 import { createForm } from '@toclocoinc/lattice-grid/modules/form';
 import { DEMO_LICENCE } from './licence.js';
 
@@ -21,7 +21,7 @@ function columns(macFormat) {
     { field: 'mac', title: 'MAC', type: 'mac', typeOptions: { macFormat }, width: 150, edit: true },
     { field: 'vlan', title: 'Access VLAN', type: 'vlan', typeOptions: { vlanSingle: true }, width: 110, edit: true },
     { field: 'trunk', title: 'Trunk VLANs', type: 'vlan', width: 150, edit: true },
-    { field: 'tag', title: 'Asset tag', width: 100, edit: { enabled: true, props: { mask: ASSET_MASK } } },
+    { field: 'tag', title: 'Asset tag', width: 100, edit: { enabled: true, props: { mask: ASSET_MASK }, validate: editors.text.maskValidator(ASSET_MASK) } },
   ];
 }
 

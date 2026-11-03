@@ -124,13 +124,35 @@ try {
       check('grid cell edit with a bad IPv4 shows a message', cellMessage.length > 0, cellMessage);
       check('grid cell edit with a bad IPv4 is not saved', cellAfter === cellBefore, `${cellBefore} -> ${cellAfter}`);
 
+      // Pasting ZZ99 into an asset tag cell is refused and the cell keeps its value.
+      const tagCell = '#grid .lat-row[data-index="2"] .lat-cell[data-col="tag"]';
+      const tagText = (sel) => b.eval((q) => document.querySelector(`${q} .lat-cell-text`)?.textContent ?? '', sel);
+      const tagBefore = await tagText(tagCell);
+      await b.click(tagCell, 2);
+      await pause(200);
+      await b.selectAll();
+      await b.type('ZZ99');
+      await b.key('Enter', 'Enter', 13);
+      await pause(300);
+      const tagMessage = await b.eval(() => document.querySelector('#grid .lat-cell.lat-invalid .lat-invalid-message')?.textContent ?? '');
+      await b.key('Escape', 'Escape', 27);
+      await pause(300);
+      const tagAfter = await tagText(tagCell);
+      check('asset tag ZZ99 is refused with a message', tagMessage.length > 0, tagMessage);
+      check('asset tag cell keeps its value', tagAfter === tagBefore && tagBefore !== '', `${tagBefore} -> ${tagAfter}`);
+
       // Filter MAC by 1a2b.
+      await b.eval(() => {
+        document.querySelector('#grid').scrollIntoView({ block: 'center' });
+        for (const el of document.querySelectorAll('#grid *')) if (el.scrollLeft > 0) el.scrollLeft = 0;
+      });
+      await pause(200);
       await b.click('#grid input[aria-label="Filter MAC"]');
       await b.type('1a2b');
       await pause(500);
       const macs = await column(b, 'mac');
       const ok = macs.length > 0 && macs.length < 40 && macs.every((m) => m.replace(/[^0-9a-f]/gi, '').toLowerCase().includes('1a2b'));
-      check('MAC filter 1a2b matches in the shown form', ok, `${macs.length} rows, e.g. ${macs[0]}`);
+      check('MAC filter 1a2b matches in the shown form', ok, `${macs.length} rows, e.g. ${macs.slice(0, 4).join(' ')}`);
 
       // The same filter still matches after the display format changes.
       await b.eval(() => { const s = document.getElementById('mac-format'); s.value = 'cisco'; s.dispatchEvent(new Event('change', { bubbles: true })); });
